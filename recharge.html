@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>充值系统</title>
+
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/templatemo-style.css" rel="stylesheet">
+    <style>
+        .header {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            height: 60px;
+            background-color: #000;
+            color: #fff;
+        }
+        
+        .content {
+            margin-top: 100px;
+        }
+        
+        .greenbg {
+            width: 100%;
+            background-color: #0f0;
+        }
+        
+        .greenbr {
+            text-align: center;
+            border: solid;
+            border-radius: 8px;
+            border-color: #0a0;
+            color: #0a0;
+        }
+        
+        .submit {
+            height: 45px;
+        }
+        
+        .fit {
+            width: 100%;
+        }
+        
+        .row {
+            margin-top: 10px;
+        }
+        
+        .panal {
+            width: 80%;
+            margin: 0 auto;
+            margin-bottom: 30px;
+        }
+        
+        .box {
+            margin-bottom: 20x;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Left column -->
+    <div class="templatemo-flex-row">
+        <div class="templatemo-sidebar">
+            <header class="templatemo-site-header">
+                <div class="square"></div>
+                <h1>管理员</h1>
+            </header>
+            <div class="profile-photo-container">
+                <img src="images/portrait.jpg" alt="Profile Photo" class="img-responsive">
+                <div class="profile-photo-overlay"></div>
+            </div>
+            <!-- Search box -->
+            <form class="templatemo-search-form" role="search">
+                <div class="input-group">
+                    <button type="submit" class="fa fa-search"></button>
+                    <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+                </div>
+            </form>
+            <div class="mobile-menu-icon">
+                <i class="fa fa-bars"></i>
+            </div>
+            <nav class="templatemo-left-nav">
+                <ul>
+                    <li><a href="#" class="active"><i class="fa fa-database fa-fw"></i>充值系统</a></li>
+                    <li><a href="order.html"><i class="fa fa-map-marker fa-fw"></i>订单查询</a></li>
+                    <li><a href="manage-users.html"><i class="fa fa-users fa-fw"></i>管理用户</a></li>
+                    <li><a href="login.html"><i class="fa fa-eject fa-fw"></i>登出</a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- Main content -->
+        <div class="templatemo-content col-1 light-gray-bg">
+            <div class="panal">
+                <div class="row">
+                    <div class="col-xs-5 greenbr" onclick="get(0)" style="background-color:#0a0;color:#fff">
+                        <strong>10金币</strong>
+                        <br> 价格：1.00元
+                    </div>
+                    <div class="col-xs-offset-2 col-xs-5 greenbr" onclick="get(1)">
+                        <strong>30金币</strong>
+                        <br> 价格：3.00元
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-5 greenbr" onclick="get(2)">
+                        <strong>50金币</strong>
+                        <br> 价格：5.00元
+                    </div>
+                    <div class="col-xs-offset-2 col-xs-5 greenbr" onclick="get(3)">
+                        <strong>100金币</strong>
+                        <br> 价格：10.00元
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-5 greenbr" onclick="get(4)">
+                        <strong>300金币</strong>
+                        <br> 价格：30.00元
+                    </div>
+                    <div class="col-xs-offset-2 col-xs-5 greenbr" onclick="get(5)">
+                        <strong>500金币</strong>
+                        <br> 价格：50.00元
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <form class="form panal" method="get">
+                <div class="form-group row box">
+                    <label for="uid" class="col-xs-3 control-label">账号</label>
+                    <div class="col-xs-9">
+                        <input type="text" class="form-control" id="uid" name="uid" placeholder="输入要充值的账号">
+                    </div>
+                </div>
+
+                <div class="form-group row box">
+                    <label for="count" class="col-xs-3 control-label">金额</label>
+                    <div class="col-xs-9">
+                        <input type="text" class="form-control" id="count" name="count" readonly value="10">
+                    </div>
+                </div>
+
+                <div class="form-group row box">
+                    <div class="col-xs-12 fit">
+                        <button type="submit" class="btn btn-success fit">充值</button>
+                    </div>
+                </div>
+                <div class="form-group row box text-right">
+                    <button class="btn btn-success col-xs-12"> <a href="log.html">充值记录</a></button>
+                </div>
+            </form>
+        </div>
+
+
+        <!-- JS -->
+
+
+        <script>
+            function getByClass(parent, cls) {
+                if (parent.getElementsByClassName) {
+                    return parent.getElementsByClassName(cls);
+                } else {
+                    var res = [];
+                    var reg = new RegExp(' ' + cls + ' ', 'i')
+                    var ele = parent.getElementsByTagName('*');
+                    for (var i = 0; i < ele.length; i++) {
+                        if (reg.test(' ' + ele[i].className + ' ')) {
+                            res.push(ele[i]);
+                        }
+                    }
+                    return res;
+                }
+            }
+
+            function get(index) {
+                var choose = getByClass(document, 'greenbr');
+                for (let i = 0; i < choose.length; i++) {
+                    choose[i].style.backgroundColor = "#fff";
+                    choose[i].style.color = "#0a0";
+                }
+                choose[index].style.backgroundColor = "#0a0";
+                choose[index].style.color = "#fff";
+
+                var count = document.getElementById("count");
+                if (index == 1) {
+                    money = 30;
+                } else
+                if (index == 2) {
+                    money = 50;
+                } else
+                if (index == 3) {
+                    money = 100;
+                } else
+                if (index == 4) {
+                    money = 300;
+                } else
+                if (index == 5) {
+                    money = 500;
+                } else {
+                    money = 10;
+                }
+                count.value = money;
+            }
+        </script>
+</body>
+
+</html>
